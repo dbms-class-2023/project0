@@ -34,8 +34,8 @@ class StorageAccessManagerTest {
     @BeforeEach
     fun setUp() {
         //storage = createHardDriveEmulatorStorage()
-        //directoryStorage = createHardDriveEmulatorStorage(CatalogPageFactoryImpl())
-        directoryStorage = createMappedFileStorage(factory = CatalogPageFactoryImpl())
+        directoryStorage = createHardDriveEmulatorStorage(CatalogPageFactoryImpl())
+        //directoryStorage = createMappedFileStorage(factory = CatalogPageFactoryImpl())
         storage = directoryStorage
     }
 
