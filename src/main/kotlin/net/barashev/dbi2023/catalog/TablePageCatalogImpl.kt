@@ -172,7 +172,7 @@ class ZeroPageHeader(internal val directorySize: Int, internal val freeCatalogPa
     companion object {
         fun read(page: DiskPage): ZeroPageHeader {
             val record = Record3(intField(), intField(), intField()).fromBytes(page.rawBytes)
-            if (record.value3 == -1) {
+            if (record.value3 <= 0) {
                 return ZeroPageHeader(0, MAX_TABLE_COUNT, MAX_ROOT_PAGE_COUNT + 1)
             }
             return ZeroPageHeader(record.value1, record.value2, record.value3)

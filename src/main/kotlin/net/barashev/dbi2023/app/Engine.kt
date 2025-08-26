@@ -103,7 +103,8 @@ class QueryExecutor(
             filterResult
         }
 
-        return result ?: executeSelect(plan, temporaryTables)?.also {
+        val result2 = result ?: executeSelect(plan, temporaryTables)
+        return result2?.also {
             it.close = { storageAccessManager.deleteTable(it.tableName) }
             temporaryTables.remove(it.tableName)
         } ?: error("Join clause seems to be empty")
